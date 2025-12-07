@@ -1,0 +1,105 @@
+\section{Metal Oxide Semiconductor FET}
+
+As well as the Junction Field Effect Transistor (JFET), there is another type of Field Effect Transistor available whose Gate input is electrically insulated from the main current carrying channel and is therefore called an Insulated Gate Field Effect Transistor.
+
+The most common type of insulated gate FET which is used in many different types of electronic circuits is called the Metal Oxide Semiconductor Field Effect Transistor or MOS-FET for short.
+
+The IGFET or MOSFET is a voltage controlled field effect transistor that differs from a JFET in that it has a "Metal Oxide" Gate electrode which is electrically insulated from the main semiconductor n-channel or p-channel by a very thin layer of insulating material usually silicon dioxide, commonly known as glass.
+
+\subsection{Depletion-mode MOSFET}
+
+The Depletion-mode MOSFET, which is less common than the enhancement mode types. This device is very similar to JFET, except that the maximum current saturation is obtained at VGS > 0. The circuit used to verify IDSS and VP for DFET is presented as follows:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{graphics/manual/ex31_sch.png}
+    \caption{DFET verification in PSPICE}
+    \label{fig:ex31_sch}
+\end{figure}
+
+The device for a common DFET is MbreakND. After a dc sweep simulation when V3 varies from -5V to 0V, the results are shown below:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{graphics/manual/ex31_sim.png}
+    \caption{Simulation results with DFET}
+    \label{fig:ex31_sim1}
+\end{figure}
+
+From this simulation results, it is confirmed that IDSS = 160mA and VP =-4 for DFET.
+
+\textbf{Students are proposed to implement the circuit below:}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{graphics/manual/ex31_sch2.png}
+    \caption{Self bias configuration for DFET}
+    \label{fig:ex31_sch2}
+\end{figure}
+
+Only the bias configuration is required to executed. Please capture the simulation results with current and voltage information on the circuit. Finally, explain these values by theory calculations.
+
+\textbf{Simulation results:}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{graphics/ex31_sim.png}
+    \caption{Simulation results}
+    \label{fig:ex31_sim2}
+\end{figure}
+
+\textbf{Explanation:}
+
+In this circuit, the Depletion-mode MOSFET (MbreakND) is biased using the self-bias configuration. The gate terminal is connected to ground through a very large resistor $R_2 = 680\,k\Omega$, therefore the gate voltage is fixed at:
+
+\[
+V_G = 0\,V
+\]
+
+The drain current $I_D$ flows through the source resistor $R_3 = 1\,k\Omega$, creating a voltage drop at the source:
+
+\[
+V_S = I_D \cdot R_3 = 148.4\,\mu A \times 1\,k\Omega = 0.148\,V
+\]
+
+As a result, the gate-to-source voltage becomes:
+
+\[
+V_{GS} = V_G - V_S = 0 - 0.148 = -0.148\,V
+\]
+
+This negative $V_{GS}$ is generated automatically by the circuit due to the voltage drop across the source resistor and is the key mechanism of the self-bias operation. The negative $V_{GS}$ reduces the drain current and stabilizes the operating point of the DFET without requiring an external negative power supply.
+
+The drain voltage can be calculated as:
+
+\[
+V_D = V_{DD} - I_D \cdot R_1 = 12 - 148.4\,\mu A \times 2\,k\Omega \approx 11.70\,V
+\]
+
+The simulation results give $I_D = 148.4\,\mu A$ and $V_D = 11.70\,V$, which are in full agreement with the theoretical analysis. Therefore, the DFET operates correctly in the saturation (active) region with a stable self-bias operating point.
+
+
+\subsection{Enhancement-mode MOSFET}
+
+The more common Enhancement-mode MOSFET or eMOSFET. The device is normally “OFF” (non-conducting) when the gate bias voltage, VGS is equal to zero. For the n channel enhancement MOS transistor a drain current will only flow when a gate voltage ( VGS ) is applied to the gate terminal greater than the threshold voltage ( VTH ) level in which conductance takes place making it a transconductance device. In other words, for an n-channel enhancement mode MOSFET:+VGS turns the transistor “ON”, while a zero or-VGS turns the transistor “OFF”. Thus the enhancement-mode MOSFET is equivalent to a “normally-open” switch.
+
+The reverse is true for the p-channel enhancement MOS transistor. When VGS = 0 the device is “OFF” and the channel is open. The application of a negative (-ve) gate voltage to the p-type eMOSFET enhances the channels conductivity turning it “ON”. Then for an p- channel enhancement mode MOSFET: +VGS turns the transistor “OFF”, while -VGS turns the transistor “ON”.
+
+The validation of an EFET in PSPICE is presented bellow. The typical EFET in PSPICE is \textbf{MbreakN} device.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{graphics/manual/ex32_sch.png}
+    \caption{EFET validation}
+    \label{fig:ex32_sch}
+\end{figure}
+
+A dc sweep simulation with V3 can be performed. The simulation results with V3 varies from -1V to 5V are presented as following:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{graphics/manual/ex32_sim.png}
+    \caption{Simulation results with EFET}
+    \label{fig:ex32_sim}
+\end{figure}
+
