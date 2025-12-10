@@ -6,7 +6,12 @@ This part presents some applications using MOSFETs and most of them are EFETs. S
 
 In this circuit arrangement an Enhancement-mode N-channel MOSFET is being used to switch a simple lamp “ON” and “OFF” (could be replace by an resistor to simulate in PSPICE).
 
-%insert figure here
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{graphics/manual/ex41_sch.png}
+    \caption{EFET is used as a switch}
+    \label{fig:ex41_sch}
+\end{figure}
 
 The gate input voltage VGS is taken to an appropriate positive voltage level to turn the device and therefore the lamp load either "ON", (VGS = +ve) or at a zero voltage level that turns the device "OFF", (VGS = 0V).
 
@@ -16,8 +21,16 @@ If the resistive load of the lamp was to be replaced by an inductive load such a
 
 \textbf{Simulation results:}
 
-%insert figure here
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{graphics/ex41_sim.png}
+    \caption{Simulation results}
+    \label{fig:ex41_sim}
+\end{figure}
 
 \textbf{Explanation:}
+
+The simulation result indicates that the drain--source saturation current is $I_{DSS} = 1.2\,\text{mA}$. When the gate--source voltage is $V_{GS} = 5\,\text{V}$ (TTL HIGH level), the MOSFET operates in the ON state and supplies power to the load. Conversely, when $V_{GS} = 0\,\text{V}$, the MOSFET is in the OFF state and no current flows through the load.
+
 
 
